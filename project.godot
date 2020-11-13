@@ -16,7 +16,16 @@ _global_script_class_icons={
 [application]
 
 config/name="NetworkTutorial"
+run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Lobby="*res://Lobby.gd"
+
+[physics]
+
+2d/default_gravity=0
 
 [rendering]
 

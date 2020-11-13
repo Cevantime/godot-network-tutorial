@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_zap.ogg-522908872c45c9f8fa4fdbfc358968ab.oggstr"
+
+[deps]
+
+source_file="res://assets/bonus/sfx_zap.ogg"
+dest_files=[ "res://.import/sfx_zap.ogg-522908872c45c9f8fa4fdbfc358968ab.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

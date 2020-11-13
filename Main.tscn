@@ -1,0 +1,141 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/backgrounds/darkPurple.png" type="Texture" id=1]
+[ext_resource path="res://Main.gd" type="Script" id=2]
+[ext_resource path="res://assets/png/UI/buttonBlue.png" type="Texture" id=3]
+[ext_resource path="res://assets/png/UI/buttonGreen.png" type="Texture" id=4]
+[ext_resource path="res://assets/png/UI/buttonYellow.png" type="Texture" id=5]
+[ext_resource path="res://assets/bonus/kenvector_future.ttf" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 6 )
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameplayLayer" type="CanvasLayer" parent="."]
+
+[node name="Players" type="Node" parent="GameplayLayer"]
+
+[node name="PositionPlayer0" type="Position2D" parent="GameplayLayer/Players"]
+position = Vector2( 813, 185 )
+rotation = -1.5708
+
+[node name="PositionPlayer1" type="Position2D" parent="GameplayLayer/Players"]
+position = Vector2( 213.546, 185.262 )
+rotation = 1.5708
+
+[node name="PositionPlayer2" type="Position2D" parent="GameplayLayer/Players"]
+position = Vector2( 213.546, 426 )
+rotation = 1.5708
+
+[node name="PositionPlayer3" type="Position2D" parent="GameplayLayer/Players"]
+position = Vector2( 813, 426 )
+rotation = -1.5708
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="WaitingMsgNinePatch" type="NinePatchRect" parent="UILayer"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -196.0
+margin_top = -24.0
+margin_right = 196.0
+margin_bottom = 24.0
+size_flags_horizontal = 4
+texture = ExtResource( 5 )
+patch_margin_left = 6
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="UILayer/WaitingMsgNinePatch"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Waiting for players..."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="JoinBox" type="VBoxContainer" parent="UILayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreateGameButton" type="TextureButton" parent="UILayer/JoinBox"]
+margin_left = 401.0
+margin_top = 259.0
+margin_right = 623.0
+margin_bottom = 298.0
+size_flags_horizontal = 4
+texture_normal = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="UILayer/JoinBox/CreateGameButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Create Game"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="JoinGameButton" type="TextureButton" parent="UILayer/JoinBox"]
+margin_left = 401.0
+margin_top = 302.0
+margin_right = 623.0
+margin_bottom = 341.0
+size_flags_horizontal = 4
+texture_normal = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="UILayer/JoinBox/JoinGameButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Join Game"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LifebarBox" type="HBoxContainer" parent="UILayer"]
+anchor_right = 1.0
+margin_top = 26.0
+margin_bottom = 60.0
+custom_constants/separation = 15
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="UILayer/JoinBox/CreateGameButton" to="." method="_on_CreateGameButton_pressed"]
+[connection signal="pressed" from="UILayer/JoinBox/JoinGameButton" to="." method="_on_JoinGameButton_pressed"]
