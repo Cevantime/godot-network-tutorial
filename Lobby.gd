@@ -2,7 +2,7 @@ extends Node
 
 signal game_ready
 
-const MAX_PLAYER_COUNT = 4
+const MAX_PLAYER_COUNT = 2
 var is_server
 var map_id_with_players = {}
 var player_packed = preload("res://Player.tscn")

@@ -8,6 +8,7 @@ export(float, 0.5, 15.0) var LINEAR_ACCELERATION = 2.5
 var laser_packed_scene = preload("res://Laser.tscn")
 var index_transform = 0
 var life = 10
+var laser_instance_count = 0
 
 onready var new_transform = global_transform
 onready var old_transform = global_transform
@@ -58,6 +59,8 @@ remotesync func stop_shooting():
 remotesync func shoot():
 	var laser = laser_packed_scene.instance()
 	laser.player = self
+	laser.name = name + '-laser-' + str(laser_instance_count)
+	laser_instance_count = (laser_instance_count + 1) % 1000
 	laser.set_network_master(int(name))
 	laser.global_transform = global_transform
 	get_tree().current_scene.add_child(laser)
@@ -81,7 +84,7 @@ remote func _update_transform(_new_transform, _linear_velocity):
 	new_transform = _new_transform
 	index_transform = 0
 
-func get_damage():
+remotesync func get_damage():
 	life -= 1
 	
 	if life <= 0:
